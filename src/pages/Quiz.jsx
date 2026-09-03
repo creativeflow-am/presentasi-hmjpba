@@ -15,6 +15,11 @@ const Quiz = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [trophyClicks, setTrophyClicks] = useState(0);
 
+  // Secret Admin States
+  const [adminModalState, setAdminModalState] = useState('hidden'); // hidden, password, confirm, message
+  const [adminPassword, setAdminPassword] = useState('');
+  const [adminMessage, setAdminMessage] = useState('');
+
   // Mengambil data leaderboard dari Firebase
   useEffect(() => {
     if (db) {
@@ -94,28 +99,44 @@ const Quiz = () => {
     return "Membutuhkan Peningkatan Pemahaman";
   };
 
-  const handleTrophyClick = async () => {
+  const handleTrophyClick = () => {
     const newClicks = trophyClicks + 1;
     setTrophyClicks(newClicks);
 
     if (newClicks >= 5) {
       setTrophyClicks(0); // Reset click count
-      const password = window.prompt("SECRET ADMIN: Masukkan sandi untuk mereset Leaderboard:");
-      
-      if (password === "12345") {
-        const confirm = window.confirm("Peringatan: Tindakan ini akan MENGHAPUS SEMUA data Leaderboard. Lanjutkan?");
-        if (confirm && db) {
-          try {
-            await remove(ref(db, 'scores'));
-            alert("Leaderboard berhasil di-reset! Siap untuk dipakai live.");
-          } catch (error) {
-            alert("Gagal mereset: " + error.message);
-          }
-        }
-      } else if (password !== null) {
-        alert("Sandi salah!");
-      }
+      setAdminPassword('');
+      setAdminMessage('');
+      setAdminModalState('password');
     }
+  };
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    if (adminPassword === "12345") {
+      setAdminModalState('confirm');
+    } else {
+      setAdminMessage("Sandi salah! Akses ditolak.");
+      setAdminModalState('message');
+    }
+  };
+
+  const handleConfirmReset = async () => {
+    if (db) {
+      try {
+        await remove(ref(db, 'scores'));
+        setAdminMessage("Leaderboard berhasil di-reset! Siap untuk dipakai live.");
+      } catch (error) {
+        setAdminMessage("Gagal mereset: " + error.message);
+      }
+      setAdminModalState('message');
+    }
+  };
+
+  const closeAdminModal = () => {
+    setAdminModalState('hidden');
+    setAdminPassword('');
+    setAdminMessage('');
   };
 
   return (
@@ -350,6 +371,87 @@ const Quiz = () => {
                 </div>
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* SECRET ADMIN MODAL */}
+      <AnimatePresence>
+        {adminModalState !== 'hidden' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 100, 
+              background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px'
+            }}
+            onClick={closeAdminModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                background: 'var(--bg-primary)', padding: '32px', borderRadius: '24px',
+                width: '100%', maxWidth: '400px', border: '1px solid var(--border-color)',
+                boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
+              }}
+            >
+              {adminModalState === 'password' && (
+                <form onSubmit={handlePasswordSubmit}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', color: 'var(--text-accent)' }}>
+                    <AlertTriangle size={24} />
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)' }}>Otentikasi Admin</h3>
+                  </div>
+                  <p style={{ color: 'var(--text-secondary)', marginBottom: '16px' }}>Masukkan sandi rahasia untuk mereset Leaderboard:</p>
+                  <input
+                    type="password"
+                    value={adminPassword}
+                    onChange={(e) => setAdminPassword(e.target.value)}
+                    autoFocus
+                    placeholder="•••••"
+                    style={{
+                      width: '100%', padding: '12px 16px', borderRadius: '12px', border: '2px solid var(--border-color)',
+                      marginBottom: '24px', fontSize: '1rem', background: 'var(--bg-secondary)', color: 'var(--text-primary)', outline: 'none'
+                    }}
+                  />
+                  <div style={{ display: 'flex', gap: '12px' }}>
+                    <button type="button" onClick={closeAdminModal} style={{ flex: 1, padding: '12px', borderRadius: '12px', border: 'none', background: 'var(--bg-secondary)', color: 'var(--text-primary)', fontWeight: 700, cursor: 'pointer' }}>Batal</button>
+                    <button type="submit" style={{ flex: 1, padding: '12px', borderRadius: '12px', border: 'none', background: 'var(--text-accent)', color: '#fff', fontWeight: 700, cursor: 'pointer' }}>Lanjut</button>
+                  </div>
+                </form>
+              )}
+
+              {adminModalState === 'confirm' && (
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', color: '#ef4444' }}>
+                    <AlertTriangle size={24} />
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)' }}>Peringatan Bahaya</h3>
+                  </div>
+                  <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: 1.6 }}>Tindakan ini akan <strong>MENGHAPUS SEMUA</strong> data Leaderboard Global secara permanen. Apakah Anda yakin ingin melanjutkan?</p>
+                  <div style={{ display: 'flex', gap: '12px' }}>
+                    <button onClick={closeAdminModal} style={{ flex: 1, padding: '12px', borderRadius: '12px', border: 'none', background: 'var(--bg-secondary)', color: 'var(--text-primary)', fontWeight: 700, cursor: 'pointer' }}>Batal</button>
+                    <button onClick={handleConfirmReset} style={{ flex: 1, padding: '12px', borderRadius: '12px', border: 'none', background: '#ef4444', color: '#fff', fontWeight: 700, cursor: 'pointer' }}>Ya, Hapus Semua</button>
+                  </div>
+                </div>
+              )}
+
+              {adminModalState === 'message' && (
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ display: 'inline-flex', background: 'var(--bg-secondary)', padding: '16px', borderRadius: '50%', color: 'var(--text-primary)', marginBottom: '24px' }}>
+                    {adminMessage.includes("berhasil") ? <CheckCircle size={40} color="#22c55e" /> : <XCircle size={40} color="#ef4444" />}
+                  </div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '16px' }}>
+                    {adminMessage.includes("berhasil") ? "Berhasil!" : "Gagal!"}
+                  </h3>
+                  <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', lineHeight: 1.6 }}>{adminMessage}</p>
+                  <button onClick={closeAdminModal} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Tutup</button>
+                </div>
+              )}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
