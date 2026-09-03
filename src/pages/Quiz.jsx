@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, CheckCircle, XCircle, RotateCcw, Trophy, AlertTriangle, Users, Medal } from 'lucide-react';
 import { quizQuestions } from '../data/quizQuestions';
-import { db, ref, push, onValue, query, orderByChild, limitToLast } from '../lib/firebase';
+import { db, ref, push, onValue, query, orderByChild, limitToLast, remove } from '../lib/firebase';
 
 const Quiz = () => {
   const [gameState, setGameState] = useState('register'); // register, playing, result
@@ -91,6 +91,18 @@ const Quiz = () => {
     if (percentage >= 0.8) return "Staf Komunikasi Madya";
     if (percentage >= 0.5) return "Staf Junior Divisi Komunikasi";
     return "Membutuhkan Peningkatan Pemahaman";
+  };
+
+  const handleResetLeaderboard = async () => {
+    const confirm = window.confirm("SECRET ADMIN: Apakah Anda yakin ingin menghapus SEMUA data Leaderboard? Tindakan ini tidak bisa dibatalkan.");
+    if (confirm && db) {
+      try {
+        await remove(ref(db, 'scores'));
+        alert("Leaderboard berhasil di-reset! Siap untuk dipakai live.");
+      } catch (error) {
+        alert("Gagal mereset: " + error.message);
+      }
+    }
   };
 
   return (
@@ -238,7 +250,13 @@ const Quiz = () => {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px' }}>
               {/* Hasil Individu */}
               <div style={{ flex: '1 1 350px', background: 'var(--bg-secondary)', padding: '40px', borderRadius: '24px', textAlign: 'center' }}>
-                <Trophy size={80} color="var(--text-accent)" style={{ marginBottom: '24px' }} />
+                <Trophy 
+                  size={80} 
+                  color="var(--text-accent)" 
+                  style={{ marginBottom: '24px', cursor: 'pointer' }} 
+                  onClick={handleResetLeaderboard}
+                  title="Klik untuk Mereset Leaderboard"
+                />
                 
                 <h2 style={{ fontSize: '2rem', marginBottom: '8px' }}>Hasil Evaluasi, {playerName}!</h2>
                 <p style={{ color: 'var(--text-secondary)', marginBottom: '32px' }}>Berikut adalah hasil evaluasi 20 pertanyaan Anda:</p>

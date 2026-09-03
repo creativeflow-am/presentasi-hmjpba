@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, onValue, query, orderByChild, limitToLast } from "firebase/database";
+import { getDatabase, ref, push, onValue, query, orderByChild, limitToLast, remove } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBvGAw7oO59FzB-D9hdPlS_45dQQWASqrg",
@@ -24,4 +24,4 @@ try {
   console.error("Firebase init error:", error);
 }
 
-export { db, ref, push, onValue, query, orderByChild, limitToLast };
+export { db, ref, push, onValue, query, orderByChild, limitToLast, remove };
