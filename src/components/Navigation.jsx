@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Layout, Lightbulb, CalendarDays, Search, PlayCircle } from 'lucide-react';
+import { Home, Layout, Lightbulb, CalendarDays, Search, PlayCircle, UserCircle } from 'lucide-react';
 
 const navItems = [
   { id: 'beranda', label: 'Beranda', icon: <Home size={20} />, to: '/' },
@@ -8,6 +8,7 @@ const navItems = [
   { id: 'contentplan', label: 'Content Plan', icon: <CalendarDays size={20} />, to: '/content-plan' },
   { id: 'praktikum', label: 'Praktikum', icon: <Lightbulb size={20} />, to: '/workshop' },
   { id: 'kuis', label: 'Kuis', icon: <PlayCircle size={20} />, to: '/quiz' },
+  { id: 'profil', label: 'Profil', icon: <UserCircle size={20} />, to: '/speaker-identity' },
 ];
 
 const Navigation = () => {

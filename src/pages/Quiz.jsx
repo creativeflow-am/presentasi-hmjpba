@@ -13,6 +13,7 @@ const Quiz = () => {
   const [isAnswerRevealed, setIsAnswerRevealed] = useState(false);
   const [leaderboard, setLeaderboard] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [trophyClicks, setTrophyClicks] = useState(0);
 
   // Mengambil data leaderboard dari Firebase
   useEffect(() => {
@@ -93,14 +94,26 @@ const Quiz = () => {
     return "Membutuhkan Peningkatan Pemahaman";
   };
 
-  const handleResetLeaderboard = async () => {
-    const confirm = window.confirm("SECRET ADMIN: Apakah Anda yakin ingin menghapus SEMUA data Leaderboard? Tindakan ini tidak bisa dibatalkan.");
-    if (confirm && db) {
-      try {
-        await remove(ref(db, 'scores'));
-        alert("Leaderboard berhasil di-reset! Siap untuk dipakai live.");
-      } catch (error) {
-        alert("Gagal mereset: " + error.message);
+  const handleTrophyClick = async () => {
+    const newClicks = trophyClicks + 1;
+    setTrophyClicks(newClicks);
+
+    if (newClicks >= 5) {
+      setTrophyClicks(0); // Reset click count
+      const password = window.prompt("SECRET ADMIN: Masukkan sandi untuk mereset Leaderboard:");
+      
+      if (password === "12345") {
+        const confirm = window.confirm("Peringatan: Tindakan ini akan MENGHAPUS SEMUA data Leaderboard. Lanjutkan?");
+        if (confirm && db) {
+          try {
+            await remove(ref(db, 'scores'));
+            alert("Leaderboard berhasil di-reset! Siap untuk dipakai live.");
+          } catch (error) {
+            alert("Gagal mereset: " + error.message);
+          }
+        }
+      } else if (password !== null) {
+        alert("Sandi salah!");
       }
     }
   };
@@ -254,8 +267,8 @@ const Quiz = () => {
                   size={80} 
                   color="var(--text-accent)" 
                   style={{ marginBottom: '24px', cursor: 'pointer' }} 
-                  onClick={handleResetLeaderboard}
-                  title="Klik untuk Mereset Leaderboard"
+                  onClick={handleTrophyClick}
+                  title="Trophy"
                 />
                 
                 <h2 style={{ fontSize: '2rem', marginBottom: '8px' }}>Hasil Evaluasi, {playerName}!</h2>

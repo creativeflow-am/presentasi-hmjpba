@@ -46,7 +46,7 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               style={{ width: '100%' }}
             >
-              <a href={`${import.meta.env.BASE_URL}speaker-identity.html`} className="speaker-profile-card" style={{ marginBottom: '24px', display: 'block', textDecoration: 'none', cursor: 'pointer' }}>
+              <Link to="/speaker-identity" className="speaker-profile-card" style={{ marginBottom: '24px', display: 'block', textDecoration: 'none', cursor: 'pointer' }}>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: '24px', color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                   Speaker Identity
                   <span style={{ marginLeft: 'auto', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-accent)', background: 'rgba(188,48,95,0.08)', padding: '3px 10px', borderRadius: '999px' }}>Khusus HMJ PBA</span>
@@ -89,7 +89,7 @@ const Home = () => {
                       @hmjpba.uinssc
                     </a>
                   </div>
-              </a>
+              </Link>
 
               {/* Lanjut Belajar Button (Mobile Only) - Positioned after speaker identity */}
               <div className="hide-on-desktop" style={{ width: '100%', marginBottom: '24px' }}>
