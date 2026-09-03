@@ -6,6 +6,7 @@ import Framework from './pages/Framework';
 import Workshop from './pages/Workshop';
 import ModuleDetail from './pages/ModuleDetail';
 import ContentPlan from './pages/ContentPlan';
+import Quiz from './pages/Quiz';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/framework/:id" element={<ModuleDetail />} />
             <Route path="/content-plan" element={<ContentPlan />} />
             <Route path="/workshop" element={<Workshop />} />
+            <Route path="/quiz" element={<Quiz />} />
           </Routes>
         </div>
       </div>

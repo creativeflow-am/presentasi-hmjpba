@@ -68,7 +68,7 @@ const ContentPlan = () => {
               </li>
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <CheckCircle2 size={20} color="var(--text-accent)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                <span><strong>Hiburan (20%):</strong> Konten ringan mahasiswa PBA, curhatan mahasiswa akhir, agar akun terasa hidup.</span>
+                <span><strong>Hiburan (20%):</strong> Konten ringan seputar kehidupan mahasiswa PBA untuk menjaga interaksi dan kedekatan emosional.</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <CheckCircle2 size={20} color="var(--text-accent)" style={{ flexShrink: 0, marginTop: '2px' }} />
@@ -84,7 +84,7 @@ const ContentPlan = () => {
             </div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '16px', color: 'var(--text-primary)' }}>2. Sistem Batching</h3>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-              Pengurus Divisi Kominfo memiliki kewajiban kuliah yang utama. Gunakan sistem <strong>Batching (Borongan)</strong>. Selesaikan proses kreatif di awal minggu.
+              Pengurus Divisi Kominfo memiliki kewajiban kuliah yang utama. Gunakan sistem <strong>Batching (Borongan)</strong>. Selesaikan proses pembuatan materi di awal minggu.
             </p>
             <div style={{ background: 'var(--bg-secondary)', padding: '20px', borderRadius: '12px', marginTop: '24px' }}>
               <h4 style={{ marginBottom: '12px', color: 'var(--text-primary)' }}>Siklus Mingguan:</h4>
@@ -128,21 +128,21 @@ const ContentPlan = () => {
                   <td style={{ fontWeight: 600 }}>Senin, 10:00</td>
                   <td>Edukasi</td>
                   <td>Instagram Carousel (Slide)</td>
-                  <td><strong>"3 Tools AI Wajib Buat Anak Desain Kampus"</strong><br/><span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Fokus memecahkan masalah layout nugas.</span></td>
+                  <td><strong>"3 Perangkat AI Wajib bagi Mahasiswa"</strong><br/><span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Fokus pada penyelesaian masalah tugas akademik.</span></td>
                   <td><span className="status-badge badge-published">TAYANG</span></td>
                 </tr>
                 <tr>
                   <td style={{ fontWeight: 600 }}>Rabu, 16:30</td>
                   <td>Hiburan / Relatable</td>
                   <td>TikTok / IG Reels (Video 15s)</td>
-                  <td><strong>"POV: Revisian Proposal dari Dosen Pembimbing"</strong><br/><span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Audio trending, POV komedi.</span></td>
+                  <td><strong>"Sudut Pandang: Revisi Proposal dari Dosen Pembimbing"</strong><br/><span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Menggunakan audio populer dengan pendekatan komedi ringan.</span></td>
                   <td><span className="status-badge badge-scheduled">TERJADWAL</span></td>
                 </tr>
                 <tr>
                   <td style={{ fontWeight: 600 }}>Jumat, 19:00</td>
                   <td>Hard Selling (Info)</td>
                   <td>Single Post Graphic</td>
-                  <td><strong>"Pendaftaran Volunteer FJA 2026 Resmi Dibuka!"</strong><br/><span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Headline besar, CTA jelas di bio.</span></td>
+                  <td><strong>"Pendaftaran Volunteer Gebyar Bahasa Arab 2026 Resmi Dibuka!"</strong><br/><span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Judul utama menonjol, dengan instruksi tindakan (CTA) jelas di profil.</span></td>
                   <td><span className="status-badge badge-draft">DRAFT / REVISI</span></td>
                 </tr>
               </tbody>
@@ -204,7 +204,7 @@ const ContentPlan = () => {
                 <p style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '8px' }}>124 Suka</p>
                 <p style={{ fontSize: '0.9rem', lineHeight: 1.5 }}>
                   <span style={{ fontWeight: 700, marginRight: '8px' }}>hmjpba.uinssc</span>
-                  Sering bingung membedakan penggunaan harokat dalam kalimat? Mari bahas 5 jebakan umum yang sering terjadi saat membaca teks Arab. Simpan postingan ini untuk persiapan ujian! 📚 #HMJBahasaArab #UINSiberCirebon #BelajarArab
+                  Sering bingung membedakan penggunaan harokat dalam kalimat? Mari bahas 5 jebakan umum yang sering terjadi saat membaca teks Arab. Simpan postingan ini untuk persiapan ujian! #HMJBahasaArab #UINSiberCirebon #BelajarArab
                 </p>
               </div>
             </div>

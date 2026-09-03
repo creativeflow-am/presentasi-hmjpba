@@ -1,68 +1,68 @@
 import React, { useState } from 'react';
-import { Lightbulb, PenTool, AlertTriangle, Clock, ChevronDown, ChevronUp, Trophy, Target, Star, ExternalLink } from 'lucide-react';
+import { Lightbulb, PenTool, AlertTriangle, Clock, ChevronDown, ChevronUp, Trophy, Target, Star, ExternalLink, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const challenges = [
   {
     id: 1,
-    emoji: '🔍',
+    iconName: 'Search',
     tag: 'Audit & Review',
-    title: 'Bedah Akun Tetangga',
-    subtitle: 'Jadi detektif konten HMJ se-UIN SSC',
+    title: 'Evaluasi Akun Eksternal',
+    subtitle: 'Analisis komparatif konten media sosial',
     difficulty: 2,
     time: '5 Menit',
     color: '#BC305F',
     colorBg: 'rgba(188,48,95,0.08)',
     image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80&fit=crop',
-    goal: 'Asah insting nge-review konten visual & caption kayak pro.',
+    goal: 'Asah insting mengevaluasi konten visual & caption secara profesional.',
     steps: [
-      '📱 Buka Instagram sekarang — cari akun HMJ atau BEM kampus lain (bukan @hmjpba.uinssc)',
-      '👀 Lihat postingan terakhir mereka — pamflet, caption, atau Reels terbaru',
-      '📝 Catat 3 hal yang menurut kamu kurang oke (visual kaku, caption membosankan, dll)',
-      '💡 Diskusikan: kalau @hmjpba.uinssc yang bikin, apa yang bakal kamu ubah?',
+      'Buka platform Instagram dan cari akun institusi mahasiswa sejenis',
+      'Analisis publikasi terakhir mereka (desain grafis, takarir/caption, atau video)',
+      'Identifikasi 3 aspek yang kurang optimal (contoh: visual kaku, takarir kurang interaktif)',
+      'Diskusikan hal apa yang dapat diperbaiki jika konten tersebut dipublikasikan oleh HMJ PBA',
     ],
-    tip: '🎯 Bonus: Screenshot akun yang kamu anggap paling keren dan jelaskan kenapa!',
+    tip: 'Tips: Pilihlah akun referensi yang paling relevan dengan segmentasi audiens Anda.',
   },
   {
     id: 2,
-    emoji: '✍️',
+    iconName: 'Pen',
     tag: 'Copywriting',
-    title: 'Hook Kilat: Pengumuman FJA',
-    subtitle: 'Ubah surat dekanat jadi konten yang bikin scroll berhenti',
+    title: 'Penulisan Hook: Pengumuman Acara',
+    subtitle: 'Transformasi informasi formal menjadi kalimat persuasif',
     difficulty: 3,
     time: '10 Menit',
     color: '#C03959',
     colorBg: 'rgba(192,57,89,0.08)',
     image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80&fit=crop',
-    goal: 'Latihan nulis kalimat pertama (Hook) yang auto bikin orang penasaran.',
+    goal: 'Latihan menulis kalimat pembuka (Hook) yang langsung memancing atensi.',
     steps: [
-      '📄 Bayangkan surat resmi ini: "Dengan hormat, diberitahukan bahwa pendaftaran Festival Jazirah Arab 2026 telah resmi dibuka..."',
-      '🤔 Misi: ubah jadi 3 versi Hook berbeda untuk Reels/TikTok @hmjpba.uinssc',
-      '🔥 Hook 1 → gaya pertanyaan yang bikin penasaran',
-      '😮 Hook 2 → gaya fakta mengejutkan / statistik',
-      '😂 Hook 3 → gaya relatable / humor mahasiswa PBA',
+      'Terdapat surat resmi: "Dengan hormat, diberitahukan bahwa pendaftaran Festival Jazirah Arab 2026 telah resmi dibuka..."',
+      'Tugas: Transformasi kalimat tersebut menjadi 3 variasi kalimat pembuka (Hook)',
+      'Variasi 1: Pendekatan pertanyaan yang memicu rasa ingin tahu',
+      'Variasi 2: Pendekatan penyajian fakta atau statistik audiens',
+      'Variasi 3: Pendekatan gaya bahasa keseharian mahasiswa PBA',
     ],
-    tip: '💬 Hook terbaik = yang bikin jari berhenti scroll dalam 3 detik pertama!',
+    tip: 'Prinsip Dasar: Kalimat pembuka terbaik adalah yang mampu menahan audiens pada 3 detik pertama.',
   },
   {
     id: 3,
-    emoji: '🧯',
+    iconName: 'Alert',
     tag: 'Crisis PR',
-    title: 'Admin vs Komentar Pedas',
-    subtitle: 'Gimana responmu saat @hmjpba.uinssc diserbu komentar marah?',
+    title: 'Manajemen Krisis Komunikasi',
+    subtitle: 'Strategi merespons keluhan publik secara profesional',
     difficulty: 4,
     time: '7 Menit',
     color: '#E8813A',
     colorBg: 'rgba(232,129,58,0.08)',
     image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&q=80&fit=crop',
-    goal: 'Latihan jadi admin yang cool, profesional, tapi tetap hangat saat krisis.',
+    goal: 'Latihan menjadi admin yang tenang, profesional, namun tetap solutif saat krisis.',
     steps: [
-      '📍 Skenario nyata di postingan @hmjpba.uinssc:',
-      '💬 "Sertifikat Diklat saya belum keluar padahal udah 2 bulan!! Admin kemana aja?? Nggak profesional banget ini HMJ!!"',
-      '🤝 Tugas: tulis draf balasan komentar yang profesional, empati, dan kasih solusi jelas',
-      '🚫 Hindari: defensif, janji kosong, atau kata-kata yang bisa viral negatif',
+      'Skenario nyata di ruang publik:',
+      '"Sertifikat Diklat saya belum keluar padahal sudah 2 bulan berlalu! Admin tidak profesional!"',
+      'Tugas: Susun draf balasan yang bernada profesional, berempati, dan memberikan tenggat waktu penyelesaian masalah',
+      'Kriteria: Hindari sikap defensif dan penggunaan kata yang dapat memicu perdebatan lanjutan',
     ],
-    tip: '⭐ Rule of thumb: balas dalam 3 jam, akui masalah, kasih timeline solusi nyata.',
+    tip: 'Prinsip Dasar: Balas sesegera mungkin, akui masalah, dan berikan kepastian penyelesaian.',
   },
 ];
 
@@ -110,8 +110,8 @@ const ChallengeCard = ({ ws, index }) => {
           borderRadius: '999px', padding: '4px 14px',
           fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase',
         }}>{ws.tag}</div>
-        <div style={{ position: 'absolute', top: '10px', right: '14px', fontSize: '1.8rem', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }}>
-          {ws.emoji}
+        <div style={{ position: 'absolute', top: '10px', right: '14px', fontSize: '1.8rem', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))', color: '#fff' }}>
+          {ws.iconName === 'Search' ? <Search size={28} /> : ws.iconName === 'Pen' ? <PenTool size={28} /> : <AlertTriangle size={28} />}
         </div>
       </div>
 
@@ -119,7 +119,9 @@ const ChallengeCard = ({ ws, index }) => {
       <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         {/* Mobile badge */}
         <div className="hide-on-desktop" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-          <span style={{ fontSize: '1.5rem' }}>{ws.emoji}</span>
+          <span style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center' }}>
+            {ws.iconName === 'Search' ? <Search size={24} /> : ws.iconName === 'Pen' ? <PenTool size={24} /> : <AlertTriangle size={24} />}
+          </span>
           <span style={{ background: ws.colorBg, color: ws.color, borderRadius: '999px', padding: '3px 12px', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase' }}>{ws.tag}</span>
         </div>
 
@@ -134,7 +136,7 @@ const ChallengeCard = ({ ws, index }) => {
         </div>
 
         <div style={{ background: ws.colorBg, borderRadius: '10px', padding: '10px 14px', marginBottom: '16px', fontSize: '0.86rem', color: ws.color, fontWeight: 600, lineHeight: 1.5 }}>
-          🎯 {ws.goal}
+          {ws.goal}
         </div>
 
         {/* Expand button */}
@@ -147,7 +149,7 @@ const ChallengeCard = ({ ws, index }) => {
             color: 'var(--text-primary)', marginTop: 'auto',
           }}
         >
-          <span>📋 {open ? 'Sembunyikan Langkah' : 'Lihat Langkah Praktikum'}</span>
+          <span>{open ? 'Sembunyikan Langkah' : 'Lihat Langkah Praktikum'}</span>
           {open ? <ChevronUp size={17} /> : <ChevronDown size={17} />}
         </button>
 
@@ -196,7 +198,7 @@ const Workshop = () => {
             Workshop <span className="text-gradient">Mandiri</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Tiga tantangan nyata dari dunia sosmed HMJ PBA. Selesaikan semuanya dan kamu siap jadi admin <strong>@hmjpba.uinssc</strong> yang sesungguhnya.
+            Tiga simulasi praktis dari kasus nyata pengelolaan media sosial HMJ PBA. Modul ini dirancang untuk melatih kemampuan analisis, penulisan, dan manajemen krisis.
           </p>
         </motion.div>
 
@@ -225,10 +227,10 @@ const Workshop = () => {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
           style={{ marginTop: '48px', borderRadius: '20px', background: 'linear-gradient(135deg, #BC305F, #F8A734)', padding: '36px 40px', textAlign: 'center' }}
         >
-          <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🏆</div>
-          <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', marginBottom: '8px' }}>Selesai semua tantangan?</h3>
+          <div style={{ fontSize: '2rem', marginBottom: '8px', color: '#fff' }}><Trophy size={48} /></div>
+          <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', marginBottom: '8px' }}>Penyelesaian Simulasi</h3>
           <p style={{ opacity: 0.92, fontSize: '1rem', maxWidth: '480px', margin: '0 auto', lineHeight: 1.7, color: '#fff' }}>
-            Kamu udah punya bekal yang cukup buat kelola sosmed <strong>@hmjpba.uinssc</strong> secara profesional. Sekarang waktunya eksekusi! 🚀
+            Anda telah membekali diri dengan dasar pengelolaan komunikasi publik secara profesional untuk <strong>@hmjpba.uinssc</strong>. Terapkan strategi ini secara berkelanjutan.
           </p>
           <a
             href="https://www.instagram.com/hmjpba.uinssc/"

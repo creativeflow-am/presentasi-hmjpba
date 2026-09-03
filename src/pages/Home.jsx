@@ -7,6 +7,7 @@ const quickActions = [
   { id: 'materi', label: 'Modul', icon: <BookOpen size={24} />, route: '/framework' },
   { id: 'jadwal', label: 'Kalender', icon: <CalendarDays size={24} />, route: '/content-plan' },
   { id: 'tugas', label: 'Workshop', icon: <PenTool size={24} />, route: '/workshop' },
+  { id: 'kuis', label: 'Kuis', icon: <PlayCircle size={24} />, route: '/quiz' },
 ];
 
 const Home = () => {
@@ -30,8 +31,8 @@ const Home = () => {
                 <br />
                 <span className="text-gradient">HMJ PBA UIN SSC</span>
               </h1>
-              <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '500px' }}>
-                Panduan eksklusif untuk Divisi Kominfo <strong>HMJ Pendidikan Bahasa Arab UIN Siber Syekh Nurjati Cirebon</strong>. Dari strategi konten sampai balas komentar, semuanya dikhususkan buat kalian.
+              <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', maxWidth: '500px', lineHeight: 1.6 }}>
+                Panduan komprehensif untuk Divisi Komunikasi dan Informasi <strong>HMJ Pendidikan Bahasa Arab UIN Siber Syekh Nurjati Cirebon</strong>. Membahas strategi konten hingga manajemen interaksi audiens secara profesional.
               </p>
 
               <Link to="/framework" className="btn-primary hide-on-mobile" style={{ marginBottom: '32px' }}>
@@ -85,7 +86,7 @@ const Home = () => {
                       onClick={(e) => e.stopPropagation()}
                       style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-accent)', marginTop: '4px' }}
                     >
-                      📸 @hmjpba.uinssc
+                      @hmjpba.uinssc
                     </a>
                   </div>
               </a>
