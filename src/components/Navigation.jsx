@@ -16,9 +16,7 @@ const Navigation = () => {
       <nav className="desktop-nav">
         <div className="desktop-nav-container">
           <div style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            Digital Skill Up.
-            <span style={{ fontWeight: 400, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>by</span>
-            <span style={{ background: 'var(--gradient-main)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>HMJ PBA</span>
+            Digital Skill Up. <span style={{ color: 'var(--text-accent)', fontWeight: 600 }}>by agung_sde</span>
           </div>
           <div className="desktop-nav-links">
             {navItems.map(item => (
@@ -48,7 +46,7 @@ const Navigation = () => {
       {/* Mobile Navigation (Top Header) */}
       <nav className="mobile-top-header">
         <NavLink to="/" style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: 800 }}>
-          Digital Skill Up. by HMJ PBA
+          Digital Skill Up. by agung_sde
         </NavLink>
       </nav>
 
