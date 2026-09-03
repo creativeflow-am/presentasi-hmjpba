@@ -120,7 +120,7 @@ a {
   z-index: 50;
   justify-content: space-around;
   align-items: center;
-  padding: 12px 16px env(safe-area-inset-bottom) 16px; /* Added top padding */
+  padding: 10px 4px env(safe-area-inset-bottom) 4px; /* Reduced side padding for more items */
   box-shadow: 0 -8px 20px rgba(0,0,0,0.06);
 }
 
@@ -131,7 +131,7 @@ a {
   justify-content: center;
   flex: 1;
   height: 100%;
-  font-size: 0.75rem;
+  font-size: 0.65rem; /* Reduced font size to fit 6 items */
   font-weight: 700; /* Bolder for native app feel */
   color: #9ca3af; /* Softer unselected color */
   transition: color 0.2s ease, transform 0.2s ease;

@@ -4,9 +4,9 @@ import { Home, Layout, Lightbulb, CalendarDays, Search, PlayCircle, UserCircle }
 
 const navItems = [
   { id: 'beranda', label: 'Beranda', icon: <Home size={20} />, to: '/' },
-  { id: 'kerangka', label: 'Kerangka Kerja', icon: <Layout size={20} />, to: '/framework' },
-  { id: 'contentplan', label: 'Content Plan', icon: <CalendarDays size={20} />, to: '/content-plan' },
-  { id: 'praktikum', label: 'Praktikum', icon: <Lightbulb size={20} />, to: '/workshop' },
+  { id: 'kerangka', label: 'Modul', icon: <Layout size={20} />, to: '/framework' },
+  { id: 'contentplan', label: 'Jadwal', icon: <CalendarDays size={20} />, to: '/content-plan' },
+  { id: 'praktikum', label: 'Workshop', icon: <Lightbulb size={20} />, to: '/workshop' },
   { id: 'kuis', label: 'Kuis', icon: <PlayCircle size={20} />, to: '/quiz' },
   { id: 'profil', label: 'Profil', icon: <UserCircle size={20} />, to: '/speaker-identity' },
 ];
@@ -61,9 +61,9 @@ const Navigation = () => {
             className={({ isActive }) => isActive ? "mobile-nav-item active" : "mobile-nav-item"}
           >
             <div style={{ marginBottom: '4px' }}>
-              {React.cloneElement(item.icon, { size: 24 })}
+              {React.cloneElement(item.icon, { size: 22 })}
             </div>
-            <span>{item.label}</span>
+            <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '100%', textAlign: 'center' }}>{item.label}</span>
           </NavLink>
         ))}
       </nav>
