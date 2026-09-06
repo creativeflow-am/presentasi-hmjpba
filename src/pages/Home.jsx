@@ -1,7 +1,8 @@
 import React from 'react';
-import { ArrowRight, BookOpen, CalendarDays, PenTool, Image, PlayCircle, Users, MessageCircle, Grid, UserCircle, Briefcase, Award, Download } from 'lucide-react';
+import { ArrowRight, BookOpen, CalendarDays, PenTool, Image, PlayCircle, Users, MessageCircle, Grid, UserCircle, Briefcase, Award, Download, DownloadCloud } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { usePWAInstall } from '../hooks/usePWAInstall';
 
 const quickActions = [
   { id: 'materi', label: 'Modul', icon: <BookOpen size={24} />, route: '/framework' },
@@ -12,6 +13,8 @@ const quickActions = [
 
 const Home = () => {
   const navigate = useNavigate();
+  const { canInstall, installPWA } = usePWAInstall();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,7 +38,7 @@ const Home = () => {
                 Panduan komprehensif untuk Divisi Komunikasi dan Informasi <strong>HMJ Pendidikan Bahasa Arab UIN Siber Syekh Nurjati Cirebon</strong>. Membahas strategi konten hingga manajemen interaksi audiens secara profesional.
               </p>
 
-              <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }} className="hide-on-mobile">
+              <div style={{ display: 'flex', gap: '16px', marginBottom: '32px', flexWrap: 'wrap' }} className="hide-on-mobile">
                 <Link to="/framework" className="btn-primary">
                   Mulai Belajar <ArrowRight size={20} />
                 </Link>
@@ -47,6 +50,18 @@ const Home = () => {
                 }}>
                   <Download size={20} /> Unduh Materi
                 </a>
+                
+                {/* Desktop PWA Install Button */}
+                {canInstall && (
+                  <button onClick={installPWA} className="btn-secondary" style={{ 
+                    background: 'var(--text-accent)', color: '#fff', padding: '16px 32px', cursor: 'pointer',
+                    borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '8px', 
+                    fontWeight: 700, textDecoration: 'none', border: 'none',
+                    transition: 'all 0.3s ease', boxShadow: '0 4px 14px rgba(188,48,95,0.3)'
+                  }}>
+                    <DownloadCloud size={20} /> Unduh App
+                  </button>
+                )}
               </div>
             </motion.div>
 
@@ -113,6 +128,17 @@ const Home = () => {
                 }}>
                   <Download size={20} /> Unduh Materi
                 </a>
+                
+                {/* Mobile PWA Install Button */}
+                {canInstall && (
+                  <button onClick={installPWA} style={{ 
+                    width: '100%', justifyContent: 'center', background: 'var(--text-accent)', color: '#fff', 
+                    padding: '16px 32px', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer',
+                    fontWeight: 700, border: 'none', boxShadow: '0 4px 14px rgba(188,48,95,0.3)'
+                  }}>
+                    <DownloadCloud size={20} /> Unduh App DSU
+                  </button>
+                )}
               </div>
 
               {/* Quick Actions Menu (Mobile Only) - Positioned after the button */}

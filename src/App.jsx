@@ -8,6 +8,7 @@ import ModuleDetail from './pages/ModuleDetail';
 import ContentPlan from './pages/ContentPlan';
 import Quiz from './pages/Quiz';
 import SpeakerIdentity from './pages/SpeakerIdentity';
+import CountdownGuard from './components/CountdownGuard';
 
 function App() {
   return (
@@ -18,12 +19,14 @@ function App() {
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/framework" element={<Framework />} />
-            <Route path="/framework/:id" element={<ModuleDetail />} />
-            <Route path="/content-plan" element={<ContentPlan />} />
-            <Route path="/workshop" element={<Workshop />} />
-            <Route path="/quiz" element={<Quiz />} />
             <Route path="/speaker-identity" element={<SpeakerIdentity />} />
+            
+            {/* Protected Routes */}
+            <Route path="/framework" element={<CountdownGuard><Framework /></CountdownGuard>} />
+            <Route path="/framework/:id" element={<CountdownGuard><ModuleDetail /></CountdownGuard>} />
+            <Route path="/content-plan" element={<CountdownGuard><ContentPlan /></CountdownGuard>} />
+            <Route path="/workshop" element={<CountdownGuard><Workshop /></CountdownGuard>} />
+            <Route path="/quiz" element={<CountdownGuard><Quiz /></CountdownGuard>} />
           </Routes>
         </div>
       </div>
