@@ -10,7 +10,7 @@ const SpeakerIdentity = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      style={{ width: '100%', height: 'calc(100vh - var(--desktop-nav-height))', overflow: 'hidden' }}
+      style={{ width: '100%', height: '100vh', overflow: 'hidden' }}
     >
       <iframe 
         src={`${import.meta.env.BASE_URL}speaker-identity.html`} 
