@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, BookOpen, CalendarDays, PenTool, Image, PlayCircle, Users, MessageCircle, Grid, UserCircle, Briefcase, Award } from 'lucide-react';
+import { ArrowRight, BookOpen, CalendarDays, PenTool, Image, PlayCircle, Users, MessageCircle, Grid, UserCircle, Briefcase, Award, Download } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -35,9 +35,19 @@ const Home = () => {
                 Panduan komprehensif untuk Divisi Komunikasi dan Informasi <strong>HMJ Pendidikan Bahasa Arab UIN Siber Syekh Nurjati Cirebon</strong>. Membahas strategi konten hingga manajemen interaksi audiens secara profesional.
               </p>
 
-              <Link to="/framework" className="btn-primary hide-on-mobile" style={{ marginBottom: '32px' }}>
-                Mulai Belajar <ArrowRight size={20} />
-              </Link>
+              <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }} className="hide-on-mobile">
+                <Link to="/framework" className="btn-primary">
+                  Mulai Belajar <ArrowRight size={20} />
+                </Link>
+                <a href="/materi-presentasi.pdf" download="Materi_Digital_Skill_Up.pdf" className="btn-secondary" style={{ 
+                  background: 'var(--bg-secondary)', color: 'var(--text-primary)', padding: '16px 32px', 
+                  borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '8px', 
+                  fontWeight: 700, textDecoration: 'none', border: '2px solid var(--border-color)',
+                  transition: 'all 0.3s ease'
+                }}>
+                  <Download size={20} /> Unduh Materi
+                </a>
+              </div>
             </motion.div>
 
             <motion.div
@@ -92,10 +102,17 @@ const Home = () => {
               </Link>
 
               {/* Lanjut Belajar Button (Mobile Only) - Positioned after speaker identity */}
-              <div className="hide-on-desktop" style={{ width: '100%', marginBottom: '24px' }}>
+              <div className="hide-on-desktop" style={{ width: '100%', marginBottom: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <Link to="/framework" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                   Mulai Belajar <ArrowRight size={20} />
                 </Link>
+                <a href="/materi-presentasi.pdf" download="Materi_Digital_Skill_Up.pdf" style={{ 
+                  width: '100%', justifyContent: 'center', background: 'var(--bg-secondary)', color: 'var(--text-primary)', 
+                  padding: '16px 32px', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '8px', 
+                  fontWeight: 700, textDecoration: 'none', border: '2px solid var(--border-color)'
+                }}>
+                  <Download size={20} /> Unduh Materi
+                </a>
               </div>
 
               {/* Quick Actions Menu (Mobile Only) - Positioned after the button */}
