@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Clock, Calendar, Unlock } from 'lucide-react';
 
 const RELEASE_DATE = new Date('2026-09-15T01:00:00+07:00').getTime();
