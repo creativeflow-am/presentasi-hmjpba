@@ -7,6 +7,7 @@ const quickActions = [
   { id: 'materi', label: 'Modul', icon: <BookOpen size={24} />, route: '/framework' },
   { id: 'jadwal', label: 'Kalender', icon: <CalendarDays size={24} />, route: '/content-plan' },
   { id: 'tugas', label: 'Workshop', icon: <PenTool size={24} />, route: '/workshop' },
+  { id: 'kuis', label: 'Kuis', icon: <PlayCircle size={24} />, route: '/quiz' },
 ];
 
 const Home = () => {
