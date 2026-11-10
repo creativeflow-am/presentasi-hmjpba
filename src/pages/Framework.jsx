@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Target, Users, Palette, MessageCircle, BarChart3, Workflow, ArrowRight, LayoutTemplate } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';

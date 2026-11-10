@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, FileSpreadsheet, Zap, CheckCircle2, Heart, MessageCircle, Send, Bookmark } from 'lucide-react';
 

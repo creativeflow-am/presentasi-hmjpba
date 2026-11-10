@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Target, Users, Palette, MessageCircle, BarChart3, Workflow, BookOpen, AlertCircle, Lightbulb } from 'lucide-react';
 import { motion } from 'framer-motion';
